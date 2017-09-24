@@ -1,0 +1,109 @@
+<div class="section black">
+	<div class="row container">
+		<div class="col s12 white-text center-align">
+			<h3>IL NOSTRO MENU</h3>
+			<p>Scegli le nostre proposte e ordina online!</p>
+			<p>Potrai venire a ritirare il tuo ordine nel nostro negozio o fartelo portare a casa!</p>
+		</div>
+
+    </div>
+    <div class="row container">
+		<div class="col s4" *ngFor="let sushi of sushies">
+			<sushi-component [sushi]="sushi" (openModal)="openOrderModal(sushi)"></sushi-component>
+		</div>
+    </div>
+</div>
+
+
+<div id="selectedSushi" class="modal">
+	<div class="modal-content">
+		<div class="row">
+			<div class="col s6">
+				<img src="{{selectedImage}}" height="300" class="z-depth-5">
+			</div>
+			<div class="col s6">
+				<h4>{{selectedSushi?.name | uppercase}}</h4>
+				<div class="row modal-row">
+					<div class="col s2">
+						<p><label>Price:</label></p>
+					</div>
+					<div class="col s3">
+						<p>{{selectedSushi?.price | currency: 'EUR': true}}</p>
+					</div>
+					<div class="col s2">
+						<p><label>Unit:</label></p>
+					</div>
+					<div class="col s3">
+						<p>{{selectedSushi?.unit}}</p>
+					</div>
+				</div>
+				<div class="row modal-row">
+					<div class="col s2">
+						<p><label>Ingredient:</label></p>
+					</div>
+					<div class="col s10">
+						<p>{{selectedSushi?.ingredient}}</p>
+					</div>
+				</div>
+				<div class="row modal-row">
+					<div class="input-field col s6">
+						<i class="material-icons prefix">shopping_cart</i>
+						<input id="order" type="number" class="validate" 
+							[(ngModel)]="selectedSushi.order">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<a class="modal-action modal-close waves-effect btn">Add</a>
+		<a class="modal-action modal-close waves-effect btn red"
+		(click)="cancelOrder()">Cancel</a>
+	</div>
+</div>
+
+<div class="fixed-action-btn">
+	<a class="btn-floating btn-large red button-collapse tooltipped" 
+		data-activates="orderList"
+		(click)="getOrderList()"
+		data-position="left" data-delay="50" data-tooltip="Order list">
+		<i class="large material-icons">fingerprint</i>
+	</a>
+</div>
+
+<ul id="orderList" class="side-nav">
+	<li><h4><img src="../../images/order.icon.png">Order list</h4></li>
+	<li *ngIf="order.price">
+		<table class="highlight">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Category</th>
+					<th>Units</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let sushi of order.orderedSushies"
+					(click)="openOrderModal(sushi)">
+					<td class="bree-serif-font">{{sushi.name | uppercase}}</td>
+					<td>{{getCategory(sushi.category)}}</td>
+					<td>{{sushi.order}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</li>
+	<li><div class="divider"></div></li>
+	<li>
+		<div *ngIf="!order.price" class="center-align">
+			<p>Empty list <i class="material-icons icon-align">cake</i></p>
+			<label>Qing is great at 2017.</label>
+		</div>
+		<div *ngIf="order.price" class="center-align">
+			<p>
+				<label>Total price:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>{{order.price | currency: 'EUR': true}}</p>
+			<a class="waves-effect waves-light btn" routerLink="/cart">Confirm</a>
+			<a class="waves-effect waves-light btn red"
+				(click)="emptyOrder()">Empty</a>
+		</div>
+	</li>
+</ul>

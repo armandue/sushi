@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-image">
+        <img src="{{imgPath}}">
+        <span class="card-title">{{sushi.name | uppercase}}</span>
+        <a class="btn-floating halfway-fab waves-effect waves-light red" (click)="openOrderModal()" *ngIf="sushi.avaiable">
+          <i class="material-icons">add</i>
+        </a>
+        <a class="btn-floating halfway-fab waves-effect waves-light grey tooltipped"  *ngIf="!sushi.avaiable"
+        data-position="top" data-delay="50" data-tooltip="Not avaiable">
+          <i class="material-icons">close</i>
+        </a>
+      </div>
+      <div class="card-content">
+        <div class="row">
+          <div class="col s2">
+            <p><label>Category:&nbsp;&nbsp;</label></p>
+          </div>
+          <div class="col s10">
+            <p>{{getCategory(sushi.category)}}</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s2">
+            <p><label>Price:&nbsp;&nbsp;</label></p>
+          </div>
+          <div class="col s3">
+            <p>{{sushi.price | currency: 'EUR': true}}</p>
+          </div>
+          <div class="col s6">
+            <tag-component [tags]="sushi.tags"></tag-component>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

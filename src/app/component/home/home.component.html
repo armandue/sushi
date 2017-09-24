@@ -1,0 +1,74 @@
+
+<div class="parallax-container">
+	<div class="parallax">
+		<img src="../../images/background-1.jpg">
+	</div>
+</div>
+<div class="section white">
+    <div class="row container">
+		<h2 class="header">
+			<span>
+				<img src="../../images/sushi.icon.png">
+			</span>
+			Cin House
+		</h2>
+		<p class="grey-text text-darken-3 lighten-3">Benvenuti al Cin House, dove l'amore e la passione fanno parte del nostro essere...</p>
+		<p class="grey-text text-darken-3 lighten-3">Da Londra, Tokyo, Treviso, Cin House é il concept di ristorazione innovativo che propone un angolo di Giappone moderno e trendy. Benessere ed essenzialitá, un format unico e ricercato, per un'esperienza che va oltre il piacere del gusto e coinvolge tutti i sensi.</p>
+    </div>
+</div>
+<div class="parallax-container">
+	<div class="parallax">
+		<img src="../../images/background-2.jpg">
+	</div>
+</div>
+<div class="section white">
+    <div class="row container">
+		<h2 class="header">
+			<span>
+				<img src="../../images/online.icon.png">
+			</span>
+			<a routerLink="/menuOnline">Menù Online</a>
+		</h2>
+		<p class="grey-text text-darken-3 lighten-3">Entra nel nostro menu, scegli le nostre proposte e ordina online!</p>
+		<p class="grey-text text-darken-3 lighten-3">Potrai venire a ritirare il tuo pasto nel nostro negozio o fartelo portare a casa!</p>
+    </div>
+</div>
+<div class="parallax-container">
+	<div class="parallax">
+		<img src="../../images/background-3.jpg">
+	</div>
+</div>
+<div class="section black">
+    <div class="row container">
+		<h2 class="header white-text contact">
+			<span>
+				<img src="../../images/contact.icon.png">
+			</span>
+			Contact
+		</h2>
+		<div class="row">
+			<div class="col s4 center-align">
+				<img src="../../images/clock.png">
+				<p class="grey-text text-darken-3 lighten-3">AM: 12:00 - 15:00 </p>
+				<p class="grey-text text-darken-3 lighten-3">PM: 17:00 - 23:00 </p>
+			</div>
+			<div class="col s4 center-align">
+				<img src="../../images/pointer.png">
+				<p class="grey-text text-darken-3 lighten-3">Via strada mozzato 88</p>
+				<p class="grey-text text-darken-3 lighten-3">Treviso(TV) 31100</p>
+			</div>
+			<div class="col s4 center-align">
+				<img src="../../images/phone.png">
+				<p class="grey-text text-darken-3 lighten-3">331-995-1538</p>
+			</div>
+		</div>
+    </div>
+</div>
+<agm-map [latitude]="googleMap.latitude" 
+	[longitude]="googleMap.longitude"
+	[zoom]="googleMap.zoom"
+	[scrollwheel]="googleMap.scrollwheel">
+  	<agm-marker [latitude]="googleMap.marker.latitude" 
+		[longitude]="googleMap.marker.longitude"
+		[title]="googleMap.marker.title"></agm-marker>
+</agm-map>

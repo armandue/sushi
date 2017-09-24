@@ -1,0 +1,92 @@
+<div class="section black full-height">
+	<div class="row container white-text info-form">
+		<div class="col s6">
+			 <div *ngIf="order.price">
+			 	<table>
+					<thead class="line-height">
+						<tr>
+							<th>Order List</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let sushi of order.orderedSushies">
+							<td>{{sushi.name | uppercase}}</td>
+							<td>{{sushi.order}} (Pieces)</td>
+							<td>{{sushi.price * sushi.order | currency: 'EUR': true}}</td>
+							<td><i class="material-icons hoverable"
+								(click)="deleteSushi(sushi)">delete_forever</i></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="right-align">
+					<p>Total price: {{order.price | currency: 'EUR': true}}</p>
+				</div>
+			 </div>
+			 <div *ngIf="!order.price" class="center-align">
+			 	<h3>Empty list</h3>
+			 	<img src="../../images/non.icon.png">
+			 </div>
+		</div>
+		<div class="col s6">
+			<form>
+				<div class="row">
+					<div class="input-field col s6">
+						<input placeholder="First name" 
+							type="text" 
+							class="validate"
+							formControllName="firstName">
+					</div>
+					<div class="input-field col s6">
+						<input placeholder="Last name" type="text" class="validate">
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="material-icons prefix">phone</i>
+						<input type="tel" 
+							class="validate modal-align" 
+							placeholder="Telephone number"
+							formControllName="tel">
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<i class="material-icons prefix">email</i>
+						<input class="validate modal-align" placeholder="E-mail address">
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s6">
+						<select>
+							<option value="" disabled selected>Data di consegna</option>
+							<option value="1">Today</option>
+							<option value="2">Tomorrow</option>
+							<option value="3">Any time you like</option>
+						</select>
+					</div>
+					<div class="input-field col s6">
+						<i class="material-icons prefix">access_time</i>
+						<input type="text" class="timepicker modal-align">
+					</div>
+				</div>
+				<div class="row">
+					<div class="input-field col s12">
+						<textarea id="note" class="materialize-textarea"></textarea>
+						<label for="note">Note</label>
+					</div>
+				</div>
+			</form>
+			<div class="row">
+				<div class="col s12 right-align">
+					<button type="submit" 
+					class="waves-effect waves-light btn" 
+					(click)="sendOrder()"
+					[disabled]="!order.price">Order</button>
+					<a class="waves-effect waves-light btn red" 
+					(click)="emptyOrder()"
+					routerLink="/">Cancel</a>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>
