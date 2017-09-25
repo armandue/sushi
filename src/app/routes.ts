@@ -17,8 +17,13 @@ export const routes: Routes = [
     path: '',
     component: MainComponent,
     children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+      },
     	{
-    		path: '',
+    		path: 'home',
     		component: HomeComponent
     	},
       {
@@ -38,4 +43,4 @@ export const routes: Routes = [
   }
 ];
 
-export const routing = RouterModule.forRoot(routes);
+export const routing = RouterModule.forRoot(routes, {useHash: true});
