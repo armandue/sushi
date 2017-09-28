@@ -12,11 +12,7 @@ module.exports = {
     loaders: [
       {
         test: /\.(png|jpg|jpeg)$/i,
-        loader: 'url-loader',
-        options: {
-          limit: 25000,
-          name: 'images/[hash].[ext]'
-        }
+        loader: 'file-loader?name=app/images/[hash].[ext]'
       },
       {
         test: /\.(svg|ttf|eot)$/i,

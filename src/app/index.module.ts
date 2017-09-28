@@ -15,6 +15,8 @@ import {MainComponent,
   CartComponent,
   OrderService} from './component/index';
 
+import {NonNegativeValidatorDirective} from './validator/nonNegativeNumberDirective';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -32,7 +34,8 @@ import {MainComponent,
     HomeComponent,
     MenuComponent,
     MainComponent,
-    RootComponent
+    RootComponent,
+    NonNegativeValidatorDirective
   ],
   providers: [
     OrderService
