@@ -5,7 +5,7 @@ import {Order} from './menu.class';
 import {SUSHIES} from './menu.data';
 import {OrderService} from '../main.service';
 
-import './menu.component.less'
+import './menu.component.less';
 
 @Component({
 	selector: 'menu-component',
@@ -15,6 +15,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 	sushies: ISushi[];
 	selectedImage: string;
 	order: Order;
+	orderedSushiNumber: number;
 
 	selectedSushi: ISushi = {
 		id: 0,
@@ -32,7 +33,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): any {
 		this.sushies = SUSHIES;
-
+		this.orderedSushiNumber = 0;
 		this.order = this.orderSerivce.get();
 
 		$(document).ready(function(){
@@ -46,6 +47,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 
 	openOrderModal (sushi: ISushi) {
 		this.selectedSushi = sushi;
+		this.orderedSushiNumber = sushi.order;
 		this.selectedImage = require('./../../images/sushi/' + this.selectedSushi.id + '.jpg');
 		$('#selectedSushi').modal('open');
 	}
@@ -54,8 +56,11 @@ export class MenuComponent implements OnInit, OnDestroy {
 		this.selectedSushi.order = 0;
 	}
 
-	getOrderList () {
+	addOrder () {
+		this.selectedSushi.order = this.orderedSushiNumber;
+	}
 
+	getOrderList () {
 		this.order.orderedSushies = this.sushies.filter(
 			sushi => sushi.order !== 0
 		);
@@ -66,6 +71,8 @@ export class MenuComponent implements OnInit, OnDestroy {
 			).reduce(function (sum: number, value: number) {
 				return sum + value;
 			});
+		} else {
+			this.order.price = 0;
 		}
 	}
 

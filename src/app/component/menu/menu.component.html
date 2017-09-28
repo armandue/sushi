@@ -5,7 +5,43 @@
 			<p>Scegli le nostre proposte e ordina online!</p>
 			<p>Potrai venire a ritirare il tuo ordine nel nostro negozio o fartelo portare a casa!</p>
 		</div>
-
+    </div>
+    <div class="row container white-text">
+    	<div class="col s1 center-align">
+			<p>
+		      Filter:
+		    </p>
+		</div>
+		<div class="col s2 center-align">
+			<p>
+		      <input type="checkbox" class="filled-in" id="pesceCrudo" checked="checked" />
+		      <label for="pesceCrudo">PESCE CRUDO</label>
+		    </p>
+		</div>
+		<div class="col s2 center-align">
+			<p>
+		      <input type="checkbox" class="filled-in" id="pesceCotto" checked="checked" />
+		      <label for="pesceCotto">PESCE COTTO</label>
+		    </p>
+		</div>
+		<div class="col s2 center-align">
+			<p>
+		      <input type="checkbox" class="filled-in" id="piccante" checked="checked" />
+		      <label for="piccante">PICCANTE</label>
+		    </p>
+		</div>
+		<div class="col s2 center-align">
+			<p>
+		      <input type="checkbox" class="filled-in" id="vegetariano" checked="checked" />
+		      <label for="vegetariano">VEGETARIANO</label>
+		    </p>
+		</div>
+		<div class="col s2 center-align">
+			<p>
+		      <input type="checkbox" class="filled-in" id="senzaGlutine" checked="checked" />
+		      <label for="senzaGlutine">SENZA GLUTINE</label>
+		    </p>
+		</div>
     </div>
     <div class="row container">
 		<div class="col s4" *ngFor="let sushi of sushies">
@@ -13,7 +49,6 @@
 		</div>
     </div>
 </div>
-
 
 <div id="selectedSushi" class="modal">
 	<div class="modal-content">
@@ -50,7 +85,7 @@
 						<form>
 							<i class="material-icons prefix">shopping_cart</i>
 							<input id="order" type="number" class="validate" name="order"
-								[(ngModel)]="selectedSushi.order" nonNegativeNumber>
+								min="0" [(ngModel)]="orderedSushiNumber">
 						</form>
 					</div>
 				</div>
@@ -58,9 +93,10 @@
 		</div>
 	</div>
 	<div class="modal-footer">
-		<a class="modal-action modal-close waves-effect btn">Add</a>
+		<button class="modal-action modal-close waves-effect btn" 
+			(click)="addOrder()" [disabled]="orderedSushiNumber === 0">Add</button>
 		<a class="modal-action modal-close waves-effect btn red"
-		(click)="cancelOrder()">Cancel</a>
+			(click)="cancelOrder()">Cancel</a>
 	</div>
 </div>
 

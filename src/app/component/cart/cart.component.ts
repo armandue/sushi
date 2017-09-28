@@ -56,12 +56,14 @@ export class CartComponent extends OnInit {
 }
 
 function getTotalPrice (order: Order): number {
-		if (order.orderedSushies.length === 0) {
-			return 0;
-		};
+	if (order.orderedSushies.length === 0) {
+		return 0;
+	} else {
 		return order.orderedSushies
-			.map(sushi => {return sushi.price * sushi.order;})
+			.map(sushi => {return sushi.price * sushi.order; })
 			.reduce(function (sum: number, value: number) {
 					return sum + value;
-			});
+			}
+		);
+	}
 }
