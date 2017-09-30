@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 
-import {ISushi, CATEGORY} from './sushi/sushi.class';
+import {ISushi, CATEGORY, TAGS} from './sushi/sushi.class';
 import {Order} from './menu.class';
 import {SUSHIES} from './menu.data';
 import {OrderService} from '../main.service';
@@ -16,6 +16,7 @@ export class MenuComponent implements OnInit, OnDestroy {
 	selectedImage: string;
 	order: Order;
 	orderedSushiNumber: number;
+	tags: any;
 
 	selectedSushi: ISushi = {
 		id: 0,
@@ -32,6 +33,14 @@ export class MenuComponent implements OnInit, OnDestroy {
 	constructor (private orderSerivce: OrderService) {};
 
 	ngOnInit(): any {
+		this.tags = {
+			PESCE_CRUDO: true,
+			PESCE_COTTO: true,
+			PICCANTE: true,
+			VEGETARIANO: true,
+			SENZA_GLUTINE: true
+		};
+
 		this.sushies = SUSHIES;
 		this.orderedSushiNumber = 0;
 		this.order = this.orderSerivce.get();

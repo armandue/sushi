@@ -7,6 +7,7 @@ import {AgmCoreModule} from '@agm/core';
 
 import 'materialize-css';
 
+import {SushiFilterPipe} from './pipe/SushiFilterPipe';
 import {MainComponent,
   HomeComponent,
   MenuComponent,
@@ -28,6 +29,7 @@ import {NonNegativeValidatorDirective} from './validator/nonNegativeNumberDirect
     })
   ],
   declarations: [
+    SushiFilterPipe,
     CartComponent,
     TagComponent,
     SushiComponent,

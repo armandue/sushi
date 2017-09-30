@@ -14,37 +14,42 @@
 		</div>
 		<div class="col s2 center-align">
 			<p>
-		      <input type="checkbox" class="filled-in" id="pesceCrudo" checked="checked" />
+		      <input type="checkbox" class="filled-in" id="pesceCrudo"
+		      	[(ngModel)]="tags.PESCE_CRUDO" />
 		      <label for="pesceCrudo">PESCE CRUDO</label>
 		    </p>
 		</div>
 		<div class="col s2 center-align">
 			<p>
-		      <input type="checkbox" class="filled-in" id="pesceCotto" checked="checked" />
+		      <input type="checkbox" class="filled-in" id="pesceCotto" 
+		      [(ngModel)]="tags.PESCE_COTTO" />
 		      <label for="pesceCotto">PESCE COTTO</label>
 		    </p>
 		</div>
 		<div class="col s2 center-align">
 			<p>
-		      <input type="checkbox" class="filled-in" id="piccante" checked="checked" />
+		      <input type="checkbox" class="filled-in" id="piccante" 
+		      [(ngModel)]="tags.PICCANTE" />
 		      <label for="piccante">PICCANTE</label>
 		    </p>
 		</div>
 		<div class="col s2 center-align">
 			<p>
-		      <input type="checkbox" class="filled-in" id="vegetariano" checked="checked" />
+		      <input type="checkbox" class="filled-in" id="vegetariano"
+		      [(ngModel)]="tags.VEGETARIANO" />
 		      <label for="vegetariano">VEGETARIANO</label>
 		    </p>
 		</div>
 		<div class="col s2 center-align">
 			<p>
-		      <input type="checkbox" class="filled-in" id="senzaGlutine" checked="checked" />
+		      <input type="checkbox" class="filled-in" id="senzaGlutine"
+		      [(ngModel)]="tags.SENZA_GLUTINE" />
 		      <label for="senzaGlutine">SENZA GLUTINE</label>
 		    </p>
 		</div>
     </div>
     <div class="row container">
-		<div class="col s4" *ngFor="let sushi of sushies">
+		<div class="col s4" *ngFor="let sushi of sushies | sushiFilter : tags; trackBy: index">
 			<sushi-component [sushi]="sushi" (openModal)="openOrderModal(sushi)"></sushi-component>
 		</div>
     </div>
