@@ -1,10 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 
 import {OrderService} from '../main.service';
+import {LoginService} from '../login/login.service';
 import {SUSHIES} from '../menu/menu.data';
 
 import {Order} from '../menu/menu.class';
 import {ISushi} from '../menu/sushi/sushi.class';
+import {Account} from '../login/login.class';
 
 import './cart.component.less';
 
@@ -14,12 +16,19 @@ import './cart.component.less';
 })
 export class CartComponent extends OnInit {
 	order: Order;
+	account: Account;
 
-	constructor (private orderService: OrderService) {
+	constructor (private orderService: OrderService,
+		private loginSerivce: LoginService) {
 		super();
 	};
 
 	ngOnInit () {
+		this.account = new Account();
+
+		if (this.loginSerivce.getAuthority) {
+			this.account = this.loginSerivce.getAccount();
+		}
 
 		this.order = this.orderService.get();
 

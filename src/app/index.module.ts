@@ -14,7 +14,9 @@ import {MainComponent,
   SushiComponent,
   TagComponent,
   CartComponent,
-  OrderService} from './component/index';
+  OrderService,
+  LoginComponent,
+  LoginService} from './component/index';
 
 import {NonNegativeValidatorDirective} from './validator/nonNegativeNumberDirective';
 
@@ -37,10 +39,12 @@ import {NonNegativeValidatorDirective} from './validator/nonNegativeNumberDirect
     MenuComponent,
     MainComponent,
     RootComponent,
+    LoginComponent,
     NonNegativeValidatorDirective
   ],
   providers: [
-    OrderService
+    OrderService,
+    LoginService
   ],
   bootstrap: [RootComponent]
 })

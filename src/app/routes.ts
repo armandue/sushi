@@ -4,7 +4,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {MainComponent,
   HomeComponent,
   MenuComponent,
-  CartComponent} from './component/index';
+  CartComponent,
+  LoginComponent} from './component/index';
 
 @Component({
   selector: 'app-root',
@@ -33,6 +34,10 @@ export const routes: Routes = [
       {
         path: 'cart',
         component: CartComponent
+      },
+      {
+        path: 'login',
+        component: LoginComponent
       }
     ]
   },

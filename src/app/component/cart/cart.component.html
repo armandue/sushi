@@ -34,10 +34,12 @@
 						<input placeholder="First name" 
 							type="text" 
 							class="validate"
-							formControllName="firstName">
+							name="firstName"
+							[(ngModel)]="account.firstName">
 					</div>
 					<div class="input-field col s6">
-						<input placeholder="Last name" type="text" class="validate">
+						<input placeholder="Last name" type="text" class="validate"
+						[(ngModel)]="account.lastName" name="lastName">
 					</div>
 				</div>
 				<div class="row">
@@ -46,13 +48,15 @@
 						<input type="tel" 
 							class="validate modal-align" 
 							placeholder="Telephone number"
-							formControllName="tel">
+							formControllName="tel"
+							[(ngModel)]="account.tel" name="tel">
 					</div>
 				</div>
 				<div class="row">
 					<div class="input-field col s12">
 						<i class="material-icons prefix">email</i>
-						<input class="validate modal-align" placeholder="E-mail address">
+						<input class="validate modal-align" placeholder="E-mail address"
+							[(ngModel)]="account.mail" name="mail">
 					</div>
 				</div>
 				<div class="row">
