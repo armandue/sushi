@@ -8,3 +8,4 @@ export * from './menu/sushi/tag/tag.component';
 
 export * from './login/login.component';
 export * from './login/login.service';
+export * from './login/login.guard.service';

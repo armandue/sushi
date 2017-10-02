@@ -5,7 +5,8 @@ import {MainComponent,
   HomeComponent,
   MenuComponent,
   CartComponent,
-  LoginComponent} from './component/index';
+  LoginComponent,
+  LoginGuard} from './component/index';
 
 @Component({
   selector: 'app-root',
@@ -33,7 +34,8 @@ export const routes: Routes = [
       },
       {
         path: 'cart',
-        component: CartComponent
+        component: CartComponent,
+        canActivate: [LoginGuard]
       },
       {
         path: 'login',

@@ -16,7 +16,8 @@ import {MainComponent,
   CartComponent,
   OrderService,
   LoginComponent,
-  LoginService} from './component/index';
+  LoginService,
+  LoginGuard} from './component/index';
 
 import {NonNegativeValidatorDirective} from './validator/nonNegativeNumberDirective';
 
@@ -44,7 +45,8 @@ import {NonNegativeValidatorDirective} from './validator/nonNegativeNumberDirect
   ],
   providers: [
     OrderService,
-    LoginService
+    LoginService,
+    LoginGuard
   ],
   bootstrap: [RootComponent]
 })
